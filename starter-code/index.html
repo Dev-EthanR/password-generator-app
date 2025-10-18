@@ -1,29 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="styles.css">
-  <title>Frontend Mentor | Password generator app</title>
-</head>
-<body>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+  <body>
+    <h1>Password Generator</h1>
 
-  Password Generator
+    <section class="result-container">
+      <h2 class="generated-password">P4$5W0rD!</h2>
+      <img class="copy-img" src="assets/images/icon-copy.svg" alt="copy" />
+    </section>
 
-  P4$5W0rD!
+    <main class="container">
+      <form class="password-gen-form">
+        <label for="slider" class="slider-heading"
+          ><p>Character Length</p>
+          <span class="slider-value" id="slider-value"></span
+        ></label>
+        <input
+          type="range"
+          min="1"
+          max="20"
+          value="10"
+          class="slider"
+          name="slider"
+          id="slider"
+        />
+        <div>
+          <input
+            type="checkbox"
+            id="include-uppercase-letters"
+            name="include-uppercase-letters"
+          />
+          <span class="checkbox"></span>
+          <label for="include-uppercase-letters"
+            >Include Uppercase Letters</label
+          >
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="include-Lowercase-letters"
+            name="include-Lowercase-letters"
+          />
+          <span class="checkbox"></span>
+          <label for="include-Lowercase-letters"
+            >Include Lowercase Letters</label
+          >
+        </div>
+        <div>
+          <input type="checkbox" id="include-numbers" name="include-numbers" />
+          <span class="checkbox"></span>
+          <label for="include-numbers">Include Numbers</label>
+        </div>
+        <div>
+          <input type="checkbox" id="include-symbols" name="include-symbols" />
+          <span class="checkbox"></span>
+          <label for="include-symbols">Include Symbols</label>
+        </div>
+        <div class="strength-container">
+          <p>Strength</p>
+          <div class="strength-rating">
+            <p class="strength-title">Medium</p>
+            <div class="strength-boxes">
+              <div class="boxes"></div>
+              <div class="boxes"></div>
+              <div class="boxes"></div>
+              <div class="boxes"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-generate">
+          Generate
+          <img
+            class="arrow-right"
+            src="assets/images/icon-arrow-right.svg"
+            alt=""
+          />
+        </button>
+      </form>
+    </main>
 
-  Character Length
-
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
-
-  Strength
-
-  Generate
-  <script src="index.js"></script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
