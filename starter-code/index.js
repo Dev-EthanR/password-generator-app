@@ -1,6 +1,8 @@
 const slider = document.getElementById("slider");
 const button = document.getElementById("generateBtn");
 const passwordToDisplay = document.getElementById('password');
+const copyBtn = document.getElementById("copy");
+const copyText = document.getElementById('copy-text');
 
 // Slider
 function updateSliderFill() {
@@ -30,6 +32,9 @@ slider.addEventListener("input", updateSliderFill);
 
 button.addEventListener("click", generatePassword);
 
+copy.addEventListener("click", copyContent);
+
+
 function passwordSettings() {
     const checkboxes = document.querySelectorAll('.checkboxes');
     const characters = slider.value;
@@ -48,6 +53,7 @@ function passwordSettings() {
 
 function generatePassword(event){
     event.preventDefault();
+    copyText.textContent =''
     const passwordLetters = "abcdefghijklmnopqrstuvwxyz";
     const passwordNumbers = "1234567890";
     const passwordSymbols = "!@#$%^&*?~";
@@ -96,8 +102,14 @@ function shuffleArray(array){
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    [array[currentIndex], array[randomIndex]] = [ array[randomIndex],  array[currentIndex], ];
+    [array[currentIndex], array[randomIndex]] = [ array[randomIndex],  array[currentIndex]];
   }
 
   return array;
+}
+
+function copyContent() {
+    navigator.clipboard.writeText(passwordToDisplay.textContent)
+    copyText.textContent ='copied'
+
 }

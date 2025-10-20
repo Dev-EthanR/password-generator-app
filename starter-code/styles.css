@@ -113,14 +113,34 @@ h2 {
     margin-bottom: 2.4rem;
 }
 
+.copy-text {
+    color: var(--clr-primary);
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    line-height: 0.8;
+    font-family: 'JetBrains Mono', sans-serif;
+}
+
 .copy-img {
     width: 1.75rem;
     height: 2rem;
+    cursor: pointer;
+}
+
+.btn-copy {
+    background-color: inherit;
+    border: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 @media  screen and (min-width: 600px) {
     .result-container {
         max-height: 8rem;
+    }
+    .copy-text {
+        font-size: 1.8rem;
     }
 }
 
