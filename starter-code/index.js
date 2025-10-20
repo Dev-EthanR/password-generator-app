@@ -108,8 +108,12 @@ function shuffleArray(array){
   return array;
 }
 
-function copyContent() {
-    navigator.clipboard.writeText(passwordToDisplay.textContent)
-    copyText.textContent ='copied'
+async function copyContent() {
+    try {
+        await navigator.clipboard.writeText(passwordToDisplay.textContent)
+        copyText.textContent ='copied'
+    } catch (e) {
+        console.error(e)
+    }
 
 }
