@@ -17,7 +17,7 @@
     <h1>Password Generator</h1>
 
     <section class="result-container">
-      <h2 class="generated-password">P4$5W0rD!</h2>
+      <h2 class="generated-password" id="password">P4$5W0rD!</h2>
       <img class="copy-img" src="assets/images/icon-copy.svg" alt="copy" />
     </section>
 
@@ -37,36 +37,48 @@
           id="slider"
         />
         <div>
-          <input
-            type="checkbox"
-            id="include-uppercase-letters"
-            name="include-uppercase-letters"
-          />
-          <span class="checkbox"></span>
-          <label for="include-uppercase-letters"
-            >Include Uppercase Letters</label
+          <label class="checkbox-container"
+            ><input
+              type="checkbox"
+              class="checkboxes"
+              id="uppercase"
+              name="include-uppercase-letters"
+            />
+            <span class="checkmark"></span>Include Uppercase Letters</label
           >
         </div>
         <div>
-          <input
-            type="checkbox"
-            id="include-Lowercase-letters"
-            name="include-Lowercase-letters"
-          />
-          <span class="checkbox"></span>
-          <label for="include-Lowercase-letters"
-            >Include Lowercase Letters</label
+          <label class="checkbox-container"
+            ><input
+              type="checkbox"
+              class="checkboxes"
+              id="Lowercase"
+              name="include-Lowercase-letters"
+            />
+            <span class="checkmark"></span>Include Lowercase Letters</label
           >
         </div>
         <div>
-          <input type="checkbox" id="include-numbers" name="include-numbers" />
-          <span class="checkbox"></span>
-          <label for="include-numbers">Include Numbers</label>
+          <label class="checkbox-container"
+            ><input
+              class="checkboxes"
+              type="checkbox"
+              id="numbers"
+              name="include-numbers"
+            />
+            <span class="checkmark"></span>Include Numbers</label
+          >
         </div>
         <div>
-          <input type="checkbox" id="include-symbols" name="include-symbols" />
-          <span class="checkbox"></span>
-          <label for="include-symbols">Include Symbols</label>
+          <label class="checkbox-container"
+            ><input
+              class="checkboxes"
+              type="checkbox"
+              id="symbols"
+              name="include-symbols"
+            />
+            <span class="checkmark"></span>Include Symbols</label
+          >
         </div>
         <div class="strength-container">
           <p>Strength</p>
@@ -80,7 +92,7 @@
             </div>
           </div>
         </div>
-        <button class="btn-generate">
+        <button class="btn-generate" id="generateBtn">
           Generate
           <img
             class="arrow-right"

@@ -130,7 +130,10 @@ h2 {
     flex-direction: column;
     gap: 1.6rem;
 }
-
+.slider-value {
+    color: var(--clr-primary);
+    font-size: 2.4rem;
+}
 .slider {
     margin-bottom: 1.4rem;
     width: 100%;
@@ -139,6 +142,7 @@ h2 {
     outline: none;
     height: 8px;
     background-color: var(--clr-grey-850);
+      --fill-percentage: 50%; 
 }
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -157,8 +161,79 @@ h2 {
     background: var(--clr-body);
     cursor: pointer;
 }
+
+
+input[type="range"]::-webkit-slider-thumb:active {
+    background-color: var(--clr-grey-850);
+    outline: 2px solid var(--clr-primary);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    background-color: var(--clr-grey-850);
+    outline: 2px solid var(--clr-primary);
+}
+.slider-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .slider-heading > p {
-    margin-bottom: 0;
+    margin: 0;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 55px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: inherit;
+    border: 3px solid var(--clr-body);
+}
+.checkbox-container:hover input ~ .checkmark {
+    border: 3px solid var(--clr-primary);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    border: 3px solid var(--clr-primary);
+     background-color: var(--clr-primary);
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* checkmark */
+.checkbox-container .checkmark::after {
+  left: 7px;
+  top: 1px;
+  width: 7px;
+  height: 15px;
+  border: solid var(--clr-grey-850);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 .btn-generate {
@@ -171,6 +246,30 @@ h2 {
     font-weight: 700;
     user-select: none;
     cursor: pointer;
+    border: 2px solid var(--clr-grey-850);
+    transition: transform 0.3s ease-in;
+}
+.btn-generate:active {
+    color: var(--clr-grey-800);
+    filter: inherit;
+    background-color: inherit;
+    border: none;
+}
+.btn-generate:hover {
+    background-color: rgb(129, 255, 144);
+}
+
+.btn-generate:active {
+    border: 2px solid var(--clr-primary);
+}
+.btn-generate:hover .arrow-right {
+    transform: translateX(10px);
+}
+.btn-generate:active,
+.btn-generate:active .arrow-right {
+    color: var(--clr-primary);
+    filter: brightness(0) saturate(100%) invert(83%) sepia(36%) saturate(383%) hue-rotate(71deg) brightness(102%) contrast(102%);
+    background-color: inherit;
 }
 
 .arrow-right {
@@ -178,6 +277,9 @@ h2 {
 }
 
 @media screen and (min-width: 600px) {
+    .slider-value {
+        font-size: 3.2rem;
+    }
     .btn-generate {
         font-size: 1.8rem;
     }
