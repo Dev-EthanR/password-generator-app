@@ -4,6 +4,15 @@ const passwordToDisplay = document.getElementById('password');
 const copyBtn = document.getElementById("copy");
 const copyText = document.getElementById('copy-text');
 
+
+slider.addEventListener("input", updateSliderFill);
+
+button.addEventListener("click", generatePassword);
+
+copy.addEventListener("click", copyContent);
+
+updateSliderFill();
+
 // Slider
 function updateSliderFill() {
     const sliderValueOutput = document.getElementById("slider-value");
@@ -26,15 +35,7 @@ function updateSliderFill() {
     sliderValueOutput.textContent = value; 
 }
 
-updateSliderFill();
-
-slider.addEventListener("input", updateSliderFill);
-
-button.addEventListener("click", generatePassword);
-
-copy.addEventListener("click", copyContent);
-
-
+// password checkboxes and length
 function passwordSettings() {
     const checkboxes = document.querySelectorAll('.checkboxes');
     const characters = slider.value;
@@ -51,6 +52,7 @@ function passwordSettings() {
    return [characters, passwordIncludes];
 }
 
+// create the password with settings
 function generatePassword(event){
     event.preventDefault();
     copyText.textContent =''
@@ -59,6 +61,7 @@ function generatePassword(event){
     const passwordSymbols = "!@#$%^&*?~";
     let [passwordLength, passwordSettingsArr] = passwordSettings();
     if(passwordSettingsArr.length === 0) return
+    copyBtn.style.filter = 'none';
 
     const findSetting = new Set (passwordSettingsArr.map((el => el.id.toLowerCase())))
 
@@ -91,9 +94,12 @@ function generatePassword(event){
     password = shuffleArray([...password])
     passwordToDisplay.textContent = password.join('')
     passwordToDisplay.style.color = 'rgb(230, 229, 234)'
+
+    passwordStrength(password, passwordLetters, passwordNumbers, passwordSymbols);
     
 }
 
+// shuffle an array
 function shuffleArray(array){
     let currentIndex = array.length;
     let randomIndex;
@@ -108,12 +114,68 @@ function shuffleArray(array){
   return array;
 }
 
+// copy to clipboard
 async function copyContent() {
+    if(copyBtn.style.filter != 'none') return
     try {
         await navigator.clipboard.writeText(passwordToDisplay.textContent)
         copyText.textContent ='copied'
     } catch (e) {
         console.error(e)
+    }
+
+}
+
+// rate the stength of the password
+function passwordStrength(password, letters, numbers, symbols) {
+    const strengthElement = document.getElementById('passwordStrength');
+    const boxes = document.querySelectorAll('.boxes');
+
+    boxes.forEach(element => {
+        element.style.backgroundColor = 'inherit'
+        element.style.borderColor = 'var(--clr-body)'
+
+    });
+    let rating = 0;
+    let strength = '';
+    let strengthColor;
+    let numberOfBlocks;
+    password.forEach(element => {
+        if(element === element.toUpperCase()) rating += 1;
+        if(element === element.toLowerCase()) rating += 1;
+        if(numbers.includes(element)) rating += 2
+        if(symbols.includes(element)) rating += password.length > 7 ? 5 : 1
+    });
+    switch(true) {
+        case rating <= 10:
+            strength = 'too weak!';
+            strengthColor = '#F64A4A';
+            numberOfBlocks = 1;
+            break;
+        case rating <= 15: 
+            strength = 'weak';
+            strengthColor = '#FB7C58' 
+            numberOfBlocks = 2;
+            break;
+        case rating <= 20:
+            strength = 'medium';
+            strengthColor = '#F8CD65'
+            numberOfBlocks = 3;
+            break;
+        case rating > 21:
+            strength = 'strong';
+            strengthColor = 'var(--clr-primary)'
+            numberOfBlocks = 4;
+            break;
+    }
+    console.log(rating <= 20)
+    console.log(rating)
+    console.log(strength)
+    strengthElement.textContent = strength.toUpperCase();
+
+    for(let i = 0; i < numberOfBlocks; i++){
+        boxes[i].style.backgroundColor = strengthColor
+        boxes[i].style.borderColor = strengthColor
     }
 
 }
