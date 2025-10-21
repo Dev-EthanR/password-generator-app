@@ -60,7 +60,8 @@ function generatePassword(event){
     const passwordNumbers = "1234567890";
     const passwordSymbols = "!@#$%^&*?~";
     let [passwordLength, passwordSettingsArr] = passwordSettings();
-    if(passwordSettingsArr.length === 0) return
+    if(passwordSettingsArr.length === 0) return alert('Please select at least one type!');
+
     copyBtn.style.filter = 'none';
 
     const findSetting = new Set (passwordSettingsArr.map((el => el.id.toLowerCase())))
