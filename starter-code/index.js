@@ -92,11 +92,11 @@ function generatePassword(event){
         const randomChar = possibleChars[Math.floor(Math.random() * possibleChars.length)];
         password += randomChar;
     }
-    password = shuffleArray([...password]).join('');
-    passwordToDisplay.textContent = password;
+    password = shuffleArray([...password])
+    passwordToDisplay.textContent = password.join('');;
     passwordToDisplay.style.color = 'rgb(230, 229, 234)'
 
-    passwordStrength(password, passwordLetters, passwordNumbers, passwordSymbols);
+    passwordStrength(password, passwordNumbers, passwordSymbols);
     
 }
 
@@ -128,7 +128,7 @@ async function copyContent() {
 }
 
 // rate the stength of the password
-function passwordStrength(password, letters, numbers, symbols) {
+function passwordStrength(password, numbers, symbols) {
     const strengthElement = document.getElementById('passwordStrength');
     const boxes = document.querySelectorAll('.boxes');
 
