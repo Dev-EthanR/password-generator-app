@@ -92,8 +92,8 @@ function generatePassword(event){
         const randomChar = possibleChars[Math.floor(Math.random() * possibleChars.length)];
         password += randomChar;
     }
-    password = shuffleArray([...password])
-    passwordToDisplay.textContent = password.join('')
+    password = shuffleArray([...password]).join('');
+    passwordToDisplay.textContent = password;
     passwordToDisplay.style.color = 'rgb(230, 229, 234)'
 
     passwordStrength(password, passwordLetters, passwordNumbers, passwordSymbols);
