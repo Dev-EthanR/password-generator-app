@@ -9,7 +9,7 @@ slider.addEventListener("input", updateSliderFill);
 
 button.addEventListener("click", generatePassword);
 
-copy.addEventListener("click", copyContent);
+copyBtn.addEventListener("click", copyContent);
 
 updateSliderFill();
 
