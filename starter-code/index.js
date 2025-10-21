@@ -169,9 +169,6 @@ function passwordStrength(password, letters, numbers, symbols) {
             numberOfBlocks = 4;
             break;
     }
-    console.log(rating <= 20)
-    console.log(rating)
-    console.log(strength)
     strengthElement.textContent = strength.toUpperCase();
 
     for(let i = 0; i < numberOfBlocks; i++){
